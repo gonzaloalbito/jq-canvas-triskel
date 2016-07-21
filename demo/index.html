@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+	<head>
+		<title>jQuery Canvas Triskel Demo</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="description" content="" />
+		<meta name="author" content="Gonzalo Albito Méndez Rey" />
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	    <script type="text/javascript" src="../jquery-canvas-triskel.js"></script>
+	    <script type="text/javascript" src="js/jquery-canvas-triskel-demo.js"></script>
+	    <script type="text/javascript">
+	    	
+	    </script>
+	</head>
+	<body>
+		<div id="container">
+			<canvas id="triskel"></canvas>
+			<div class="content">
+				<div class="triskel-content">
+					<h2><a href="https://github.com/gonzaloalbito/jq-canvas-triskel" target="_blank">jQuery Canvas Triskel</a></h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et nibh mauris. Nullam risus mi, volutpat a dolor sit amet, aliquet consectetur nisl. Donec est dui, rutrum sed sem in, suscipit fermentum lectus. Praesent nec ligula vehicula, ultrices sapien id, euismod ante. Nunc fringilla rutrum elit in varius. Cras egestas elit orci, eu sagittis velit sodales et. Fusce luctus tempor tortor vitae finibus. Sed purus augue, euismod sed commodo a, fringilla bibendum odio. Aenean eleifend vehicula egestas. Proin et maximus ipsum. Aenean malesuada tincidunt interdum. Curabitur quis feugiat lorem. Nullam mattis velit augue, ac sagittis ante semper in. Vivamus pharetra velit vel porta gravida.</p>
+					<p>Aenean mollis tempor magna eget gravida. Cras turpis justo, bibendum vitae vehicula eu, gravida vitae lorem. Sed feugiat dignissim diam in placerat. Donec dignissim vitae mauris quis venenatis. Praesent nec hendrerit ligula. Praesent blandit, nulla vel pulvinar ornare, ex neque dictum nulla, at varius libero ex eu est. Duis eu porta elit. Nunc convallis mattis viverra. Curabitur auctor eget diam non dignissim. Duis vel sapien ante. Integer sapien ante, iaculis molestie volutpat ut, tincidunt sit amet urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+					<p>Suspendisse id eros vel sem malesuada semper ac ac dolor. Etiam non est eros. Aliquam vel pretium velit, quis auctor justo. Pellentesque rutrum, felis sed sollicitudin dapibus, dui justo tempus turpis, at sollicitudin lectus nibh non nisi. Nam ornare lacinia orci, sollicitudin ornare nisi interdum eget. Maecenas sit amet tristique ex, fermentum pretium velit. Nulla eu tellus nibh. Suspendisse nec erat a eros commodo eleifend. Suspendisse ac purus sapien. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin sit amet mollis enim, a rutrum arcu.</p>
+				</div>
+			</div>
+			<ul class="options">
+				<li class="option show">Show</li>
+				<li class="option hide">Hide</li>
+				<li class="option swap">Swap</li>
+			</ul>
+			<div>
+<pre class="codes"><code class="code triskel">
+var canvas = jQuery("#triskel")
+	var triskel = canvas.triskel({
+		framerate: 25,
+		canvas: {
+			width: 1440,
+			height: 600,
+			color: "#ffffff",
+		},
+		triskel: {
+			radius: 100,
+			count: 10,
+			color: "#ffffff",
+			border: "#ffffff",
+			style: "edge",
+			frame: {width: 960, height: 440}
+		},
+		showAnimation: {
+			duration: 500,
+			delay: 100,
+			zoom: 1.0,
+			rotate: 360,
+			inverse: true,
+			sync: true,
+			easing: false
+		},
+		hideAnimation: {
+			duration: 500,
+			delay: 100,
+			zoom: -1.0,
+			rotate: 360,
+			inverse: true,
+			sync: true,
+			easing: false
+		},
+		swapAnimation: {
+			zoomMin: 0.5,
+			zoomMax: 1.5,
+			zoomIn: {
+				duration: 250,
+				delay: 100,
+				sync: false,
+				easing: false
+			},
+			rotate: {
+				angle: 120,
+				duration: 500,
+				delay: 0,
+				inverse: true,
+				sync: false,
+				easing: false
+			},
+			zoomOut: {
+				duration: 250,
+				delay: 0,
+				sync: true,
+				easing: false
+			}
+		}
+	});
+	
+	canvas.click(function(event){
+		if(triskel.isPaused())
+		{
+			triskel.resume();
+		}
+		else
+		{
+			triskel.pause();
+		}
+	});
+	var options = $(".options");
+	options.find(".show").click(function(event){
+		triskel.show();
+	});
+	options.find(".hide").click(function(event){
+		triskel.hide();
+	});
+	options.find(".swap").click(function(event){
+		triskel.swap();
+	});
+</code></pre>
+			</div>
+			<div class="license">
+				<p>Copyright (c) 2013 <a href="mailto:gonzalo@albito.es">Gonzalo Albito Méndez Rey</a></p>
+				<p>Licensed under <a href="https://www.gnu.org/licenses/gpl-3.0-standalone.html" target="_blank">GNU GPL 3.0</a></p>
+			</div>
+		</div>
+	</body>
+</html>
